@@ -1,39 +1,21 @@
 
 const express = require("express");
-
+const mongoose = require("mongoose");
 const app = express();
+const { userRouter} = require("./routes/user");
+const { courseRouter} = require("./routes/course");
+const {adminRouter} = require("./routes/admin");
 
 const port = 3000;
+app.use(express.json());
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/admin", adminRouter);
+app.use("/api/v1/course", courseRouter);
 
-
-
-app.post("/user/signup", function(req, res) {
-    res.json({
-        message: "signup  endpoint"
+ async function main() {
+    await mongoose.connect("mongodb+srv://mouli:ILOVEYOUMOULI@cluster0.wjqrk.mongodb.net/coursera-app");
+    app.listen(port, ()=> {
+        console.log(`server is running at ${port}`);
     })
-})
-
-
-app.post("/user/signin", function(req, res) {
-    res.json({
-        message: "usignin  endpoint"
-    })
-})
-
-app.get("/user/purchases", function(req, res){
-    res.json({
-        message: ""
-    })
-})
-
-app.post("/course/purchase", function(req, res){
-
-})
-app.get("/courses", function(req, res) {
-
-})
-
-
-app.listen(port, ()=> {
-    console.log(`server is running at ${port}`);
-})
+}
+main();
