@@ -10,7 +10,7 @@ const jwt = require("jsonwebtoken");
 
 const bcrypt = require("bcrypt"); 
 
-const JWT_ADMIN_PASSWORD = "11234lkhkldbnkdfb";
+const {JWT_ADMIN_PASSWORD} = require("../config");
 
 
 adminRouter.post("/signup", async function(req, res) {

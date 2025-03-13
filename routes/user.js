@@ -5,8 +5,8 @@ const {z} = require("zod");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { default: errorMap } = require('zod/locales/en.js');
+const {JWT_USER_PASSWORD} = require("../config");
 
-const JWT_USER_PASSWORD = "jfdhgdhmgd"
 
 //handlers 
 
