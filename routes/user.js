@@ -64,6 +64,8 @@ userRouter.post("/signup",  async function(req, res) {
             const token =  jwt.sign({
                 id: user._id
             }, JWT_USER_PASSWORD)
+
+            
             res.json({
                 token: token
             })
